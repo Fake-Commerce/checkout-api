@@ -1,0 +1,22 @@
+{
+  "name": "checkout-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Fake-Commerce/checkout-api.git",
+  "author": "Daniel Alves <danielalves137@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "docker-up": "docker-compose up -d",
+    "docker-restart": "docker-compose down && docker-compose up -d"
+  },
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongoose": "^6.2.7",
+    "uuidv4": "^6.2.12"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "sucrase": "^3.20.3"
+  }
+}
