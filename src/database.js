@@ -7,7 +7,7 @@ class Database {
     }
 
     init() {
-        mongoose.connect('mongodb://localhost:27017/checkout-db');
+        mongoose.connect('mongodb://localhost:27017/checkout');
     }
 }
 

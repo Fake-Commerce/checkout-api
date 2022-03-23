@@ -11,6 +11,7 @@
     "docker-restart": "docker-compose down && docker-compose up -d"
   },
   "dependencies": {
+    "axios": "^0.26.1",
     "express": "^4.17.3",
     "mongoose": "^6.2.7",
     "uuidv4": "^6.2.12"
