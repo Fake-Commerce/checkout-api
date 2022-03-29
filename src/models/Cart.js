@@ -1,5 +1,5 @@
-import { Schema, model } from "mongoose";
-import { uuid } from "uuidv4";
+const { Schema, model } = require("mongoose");
+const { uuid } = require("uuidv4");
 
 const ProductItemSchema = new Schema({
     product_id: {
@@ -60,14 +60,14 @@ CartModel.add = async (user_id, item) => {
 
     cart.items = items;
 
-    cart.total = this.totalCalculator(items);
+    cart.total = this.getTotal(items);
 
     await new CartModel(cart).save();
 
     return;
 }
 
-CartModel.totalCalculator = (items) => {
+CartModel.getTotal = (items) => {
     let total = 0;
     for (let i = 0; i < items.length; i++) {
         total += items[i].price;
@@ -95,4 +95,4 @@ CartModel.flush = async () => {
     await itens.remove();
 }
 
-export default CartModel;
+module.exports = CartModel;

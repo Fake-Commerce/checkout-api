@@ -1,1 +1,1 @@
-export default class ProductNotFoundError extends Error{}
+module.exports = class ProductNotFoundError extends Error { }

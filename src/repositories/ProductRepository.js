@@ -1,5 +1,5 @@
-import axios from 'axios';
-import ProductNotFoundError from './errors/ProductNotFoundError';
+const axios = require('axios');
+const ProductNotFoundError = require('./errors/ProductNotFoundError');
 
 const BASE_URL = `http://localhost:3000`;
 class ProductRepository {
@@ -10,7 +10,7 @@ class ProductRepository {
             const response = await axios.get(`${BASE_URL}/products/${productID}`);
 
             console.log(`got status ${response.status}`);
-      
+
 
             return response.data;
         } catch (err) {
@@ -22,4 +22,4 @@ class ProductRepository {
     }
 }
 
-export default new ProductRepository();
+module.exports = new ProductRepository();

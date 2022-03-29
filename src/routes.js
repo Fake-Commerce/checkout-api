@@ -1,5 +1,5 @@
-import { Router } from "express";
-import CartController from "./controllers/CartController";
+const { Router } = require("express");
+const CartController = require("./controllers/CartController");
 const routes = new Router();
 
 routes.get('/carts', CartController.index);
@@ -9,4 +9,4 @@ routes.delete('/carts/:productID', CartController.delete);
 
 routes.get('/health', (req, res) => res.json({ status: "OK" }));
 
-export default routes;
+module.exports = routes;
