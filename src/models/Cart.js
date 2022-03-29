@@ -42,7 +42,7 @@ CartModel.findByUserID = async (user_id) => {
 CartModel.add = async (user_id, item) => {
     console.log("received item", item);
 
-    let cart = await this.findByUserID(user_id);
+    let cart = await CartModel.findByUserID(user_id);
     if (!cart) {
         cart = {
             user_id,
@@ -60,7 +60,7 @@ CartModel.add = async (user_id, item) => {
 
     cart.items = items;
 
-    cart.total = this.getTotal(items);
+    cart.total = CartModel.getTotal(items);
 
     await new CartModel(cart).save();
 
@@ -70,14 +70,14 @@ CartModel.add = async (user_id, item) => {
 CartModel.getTotal = (items) => {
     let total = 0;
     for (let i = 0; i < items.length; i++) {
-        total += items[i].price;
+        total += items[i].price * items[i].quantity;
     }
     return total;
 }
 
 CartModel.delete = async (user_id, productID) => {
 
-    let cart = await this.findByUserID(user_id);
+    let cart = await CartModel.findByUserID(user_id);
 
     const items = cart.items.filter(currentItem => currentItem.product_id !== productID);
 
@@ -85,7 +85,7 @@ CartModel.delete = async (user_id, productID) => {
 
     cart.items = items;
 
-    await this.save(cart);
+    await CartModel.save(cart);
 
     return;
 }

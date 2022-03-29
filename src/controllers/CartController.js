@@ -50,8 +50,9 @@ class CartController {
 
             return res.json(response);
 
-        } catch (error) {
-            if (error instanceof ProductNotFoundError) {
+        } catch (err) {
+            console.error(err);
+            if (err instanceof ProductNotFoundError) {
                 return res.status(404).send();
             }
 

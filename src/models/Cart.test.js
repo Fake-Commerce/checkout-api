@@ -2,20 +2,20 @@ const CartModel = require('./Cart');
 
 describe("Cart", () => {
     describe("getTotal", () => {
-        test('Given an array with 2 items (price 5.40 and price 2.60) The result should be 8', () => {
+        test('Given an array with 2 items (price 5 qty 2 and price 2 qty 2) The result should be 14', () => {
             const items = [
-                { price: 5.40 },
-                { price: 2.60 }
+                { price: 5, quantity: 2 },
+                { price: 2, quantity: 2 }
             ];
-            
+
             const total = CartModel.getTotal(items);
 
-            expect(total).toBe(8);
+            expect(total).toBe(14);
         });
 
-        test('Given an array with 1 items (price 10) The result should be 10', () => {
+        test('Given an array with 1 items (price 10 qty 1) The result should be 10', () => {
             const items = [
-                { price: 10 }
+                { price: 10, quantity: 1 }
             ];
 
             const total = CartModel.getTotal(items);
